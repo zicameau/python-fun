@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-import requests, sys
+import requests
 def check(url):
     try:
         r = requests.get(url)
