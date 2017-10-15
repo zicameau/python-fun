@@ -1,5 +1,7 @@
 #!/usr/bin/env python
-import sys,http_code,validate
+import sys
+import lib.http_code as http_code
+import lib.validate as validate
 from termcolor import colored
 
 def main():
