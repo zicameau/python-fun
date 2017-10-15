@@ -5,6 +5,8 @@ Example how to create local python module
 1. `__init__.py` - Tells the interpreter to look for files as modules.
 2. `import http_code` - `http_code.py` is a file in the working directory.
 3. `http_code.check(site)` - is how to you reference the class, then the method, then pass a parameter. (`site = 'https://www.github.com'`)
+4. `import validate` - `validate.py` is a file in the working directory.
+5. `validate.url(site)` - is how to you reference the class, then the method, then pass a parameter. (`site = 'https://www.github.com'`)
 
 ## Usage
 
