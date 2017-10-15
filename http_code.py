@@ -1,12 +1,13 @@
 #!/usr/bin/env python
 import requests
+from termcolor import colored
 def check(url):
     try:
-        r = requests.get(url)
+        r = requests.get(url, allow_redirects=False)
         return(r.status_code)
 
     except requests.ConnectionError:
-        print('failed to connect')
+        print colored('failed to connect', 'red')
 
     except:
-        print('unknown error')
+        print colored('unknown error', 'red')
