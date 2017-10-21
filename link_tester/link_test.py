@@ -24,10 +24,10 @@ def main():
 
     for link in soup.find_all('a'):
         usable_link=str(link.get('href'))
-        
+
         if usable_link[:7] == 'http://':
-            print (usable_link)
             response=(str(requests.get(usable_link)).split()[1].replace('>',''))
+            print (usable_link)
 
             if response == '[200]':
                 print colored(response, 'green'),
@@ -35,14 +35,13 @@ def main():
                 print colored(response, 'red')
 
         elif usable_link[:8] == 'https://':
-            print(usable_link)
             response=(str(requests.get(usable_link)).split()[1].replace('>',''))
+            print (usable_link)
 
             if response == '[200]':
                 print colored(response, 'green'),
             else:
                 print colored(response, 'red')
-
         else:
             pass
 
