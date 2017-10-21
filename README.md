@@ -7,7 +7,7 @@ Just for fun
 Crawls webpage, gathers all links, then performs `get` requests on said links.
 
 ```
-python main.py https://www.github.com
+python link_test.py https://www.github.com
 ```
 
 ### http_code_checker
