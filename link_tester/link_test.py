@@ -1,5 +1,5 @@
 from bs4 import BeautifulSoup
-import requests,sys
+import requests, sys
 from termcolor import colored
 
 def main():
@@ -27,23 +27,26 @@ def main():
 
         if usable_link[:7] == 'http://':
             response=(str(requests.get(usable_link)).split()[1].replace('>',''))
-            print (usable_link)
 
             if response == '[200]':
-                print colored(response, 'green'),
+                print colored(response, 'green'), usable_link
+
             else:
-                print colored(response, 'red')
+                print colored(response, 'red'), usable_link
 
         elif usable_link[:8] == 'https://':
             response=(str(requests.get(usable_link)).split()[1].replace('>',''))
-            print (usable_link)
 
             if response == '[200]':
-                print colored(response, 'green'),
+                print colored(response, 'green'), usable_link
             else:
-                print colored(response, 'red')
+                print colored(response, 'red'), usable_link
+
         else:
             pass
 
 if __name__ == "__main__":
-    main()
+    try:
+        main()
+    except KeyboardInterrupt:
+        print colored('Interrupted, bye.', 'red')
