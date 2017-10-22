@@ -8,4 +8,5 @@ script:
   - pip install -r ./requirements.txt
   - python ./link_test.py https://www.github.com
   - cd .. && cd http_code_checker
+  - pip install -r ./requirements.txt
   - python ./main.py https://www.github.com
