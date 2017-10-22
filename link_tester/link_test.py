@@ -1,52 +1,50 @@
+#!/usr/bin/env python
+
 from bs4 import BeautifulSoup
 import requests, sys
 from termcolor import colored
 
-def main():
-    try:
-        site = sys.argv[1]
-    except:
-        print colored('no site argument passed e.g. https://google.com', 'red')
-        sys.exit(1)
-
-    #Validate argument starts with http or https
+def check_protocol(site):
+#Validate argument starts with http or https
     if site[:7] == 'http://':
-        pass
+        return True
     elif site[:8] == 'https://':
-        pass
+        return True
     else:
-        print colored('invalid URL passed as arg.', 'red')
-        exit(1)
+        return False
 
-    r  = requests.get(site)
+def check_response(response, link):
+    if response == '[200]':
+        print colored(response, 'green'), link
+    else:
+        print colored(response, 'red'), link
+
+def test_links(site):
+    try:
+        r  = requests.get(site)
+    except requests.ConnectionError:
+        print colored('Unable to Connect' , 'red')
+        sys.exit(1)
     data = r.text
     soup = BeautifulSoup(data, 'html.parser')
-
     for link in soup.find_all('a'):
-        usable_link=str(link.get('href'))
-
-        if usable_link[:7] == 'http://':
-            response=(str(requests.get(usable_link)).split()[1].replace('>',''))
-
-            if response == '[200]':
-                print colored(response, 'green'), usable_link
-
-            else:
-                print colored(response, 'red'), usable_link
-
-        elif usable_link[:8] == 'https://':
-            response=(str(requests.get(usable_link)).split()[1].replace('>',''))
-
-            if response == '[200]':
-                print colored(response, 'green'), usable_link
-            else:
-                print colored(response, 'red'), usable_link
-
+        link=str(link.get('href'))
+        if check_protocol(link):
+            response=(str(requests.get(link)).split()[1].replace('>',''))
+            check_response(response, link)
         else:
             pass
 
 if __name__ == "__main__":
     try:
-        main()
-    except KeyboardInterrupt:
-        print colored('Interrupted, bye.', 'red')
+        site = str(sys.argv[1])
+        if not check_protocol(site):
+            print colored('invalid URL passed as arg.', 'red')
+            sys.exit(1)
+        try:
+            test_links(site)
+        except KeyboardInterrupt:
+            print colored('Interrupted, bye.', 'red')
+    except IndexError:
+        print colored('no site argument passed e.g. https://google.com', 'red')
+        sys.exit(1)
