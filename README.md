@@ -14,7 +14,7 @@ python link_test.py https://www.github.com
 ![alt text](https://i.imgur.com/210IEMg.png)
 
 ### http_code_checker
-Tiny modules to validue URL strings and response codes. 
+Tiny modules to validate URL strings and response codes. 
 Mainly to test OO python.
 #### Accepts URL as argument and returns http response code
 
