@@ -4,14 +4,8 @@ from bs4 import BeautifulSoup
 import requests, sys
 from termcolor import colored
 
-def check_protocol(site):
-#Validate argument starts with http or https
-    if site[:7] == 'http://':
-        return True
-    elif site[:8] == 'https://':
-        return True
-    else:
-        return False
+def check_protocol(site): #Validate argument starts with http or https
+    return bool(__import__('re').search('^http(|s):\/\/', site))
 
 def check_response(response, link):
     if response == '[200]':
