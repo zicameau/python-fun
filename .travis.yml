@@ -6,4 +6,4 @@ python:
 script:
   - cd ./link_tester
   - pip install -r ./requirements.txt
-  - python ./test_links.py https://www.github.com
+  - python ./link_test.py https://www.github.com
