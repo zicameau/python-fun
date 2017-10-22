@@ -19,9 +19,9 @@ def test_links(site):
         sys.exit(1)
     soup = BeautifulSoup(r.text, 'html.parser')
     for link in soup.find_all('a'):
-        link=str(link.get('href'))
+        link = str(link.get('href'))
         if check_protocol(link):
-            response=requests.get(link)
+            response = requests.get(link)
             print_response(response.status_code, link)
 
 if __name__ == '__main__':
