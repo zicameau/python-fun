@@ -4,6 +4,8 @@ python:
   - "2.7"
 
 script:
+  - pwd
+  - ls -la
   - cd ./python-fun/link_test
   - pip install -r ./requirements.txt
   - python ./test_links.py https://www.github.com
