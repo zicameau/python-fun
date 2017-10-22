@@ -1,4 +1,6 @@
 # python-fun
+[![Build Status](https://travis-ci.org/circa10a/python-fun.svg?branch=master)](https://travis-ci.org/circa10a/python-fun)
+
 Just for fun
 
 ## Usage
