@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-import argparse,paramiko,sys
+import argparse,paramiko,os.path,sys
 from termcolor import colored
 
 def parser():
@@ -10,6 +10,11 @@ def parser():
     parser.add_argument('-k','--key', help='Path To Key', required=True)
     parser.add_argument('-u','--user', help='Remote User', required=True)
     return parser.parse_args()
+
+def check_key(key):
+     if not os.path.exists(key):
+         print colored('Path to key is invalid.', 'red')
+         sys.exit(1)
 
 def connect(address,user,key,command):
     ssh = paramiko.SSHClient()
@@ -28,6 +33,7 @@ def main():
     command = args.command
     key = args.key
     user = args.user
+    check_key(key)
     print colored(connect(address,user,key,command),'green')
 
 if __name__ == '__main__':
