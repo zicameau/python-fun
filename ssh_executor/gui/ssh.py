@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 from gooey import Gooey
 import argparse,paramiko,os.path,sys
-from termcolor import colored
 
 @Gooey
 def parser():
@@ -14,7 +13,7 @@ def parser():
 
 def check_key(key):
      if not os.path.exists(key):
-         print colored('Path to key is invalid.', 'red')
+         print ('Path to key is invalid.')
          sys.exit(1)
 
 def connect(address,user,key,command):
@@ -25,7 +24,10 @@ def connect(address,user,key,command):
         ssh_stdin, ssh_stdout, ssh_stderr = ssh.exec_command(command)
         return ssh_stdout.read()
     except paramiko.ssh_exception.SSHException:
-        print colored('Unable to connect.', 'red')
+        print ('Unable to connect.')
+        sys.exit(1)
+    except paramiko.ssh_exception.NoValidConnectionsError:
+        print ('Unable to connect.')
         sys.exit(1)
 
 def main():
@@ -35,7 +37,7 @@ def main():
     key = args.key
     user = args.user
     check_key(key)
-    print colored(connect(address,user,key,command),'green')
+    print (connect(address,user,key,command))
 
 if __name__ == '__main__':
     main()

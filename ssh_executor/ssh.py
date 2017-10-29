@@ -26,6 +26,9 @@ def connect(address,user,key,command):
     except paramiko.ssh_exception.SSHException:
         print colored('Unable to connect.', 'red')
         sys.exit(1)
+    except paramiko.ssh_exception.NoValidConnectionsError:
+        print colored('Unable to connect.', 'red')
+        sys.exit(1)
 
 def main():
     args = parser()

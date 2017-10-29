@@ -1,5 +1,4 @@
 paramiko
 argparse
-termcolor
 psutil
 gooey
