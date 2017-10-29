@@ -9,7 +9,7 @@ Just for fun
 Crawls webpage, gathers all links, then performs `get` requests on said links.
 
 ```
-python link_test.py https://www.github.com
+python python-fun/link-tester/link_test.py https://www.github.com
 ```
 ![alt text](https://i.imgur.com/210IEMg.png)
 
@@ -24,7 +24,7 @@ Mainly to test OO python.
 4. `validate.url(site)` - is how you reference the class and function then pass a parameter. (`site = 'https://www.github.com'`)
 
 ```
-python main.py https://www.google.com
+python python-fun/http_code_checker/main.py https://www.google.com
 ```
 ![alt text](https://i.imgur.com/IGV5Fgt.png)
 
@@ -32,7 +32,8 @@ python main.py https://www.google.com
 Runs command/script on remote host via ssh.
 
 ```
-python ssh.py --help
+python python-fun/ssh-executor/ssh.py --help
+
 usage: ssh.py [-h] -a ADDRESS -c COMMAND -k KEY -u USER
 
 SSH Command Executor
@@ -49,7 +50,23 @@ optional arguments:
  ```
  **Example**
  ```
- python ssh.py -a 165.227.90.238 -u root -k ~/.ssh/id_rsa -c uptime
+ python python-fun/ssh-executor/ssh.py -a 165.227.90.238 -u root -k ~/.ssh/id_rsa -c uptime
  23:12:53 up  1:01,  0 users,  load average: 0.13, 0.05, 0.01
 ```
 ![alt text](https://i.imgur.com/Q21fDyH.png)
+
+### ssh_executor (GUI)
+Used Gooey module to create interface around `ssh-executor`
+Works on:
+  - MacOS
+  - Windows
+
+#### Usage
+
+```bash
+python python-fun/ssh-executor/gui/ssh.py
+```
+
+![alt text](https://i.imgur.com/CNUyz2X.jpg)
+![alt text](https://i.imgur.com/GrAet3P.jpg)
+
