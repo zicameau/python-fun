@@ -1,7 +1,9 @@
 # python-fun
 [![Build Status](https://travis-ci.org/circa10a/python-fun.svg?branch=master)](https://travis-ci.org/circa10a/python-fun)
 
-Just for fun
+This branch is to make this tool python v3 compatible.
+
+Just for fun 
 
 ### link_tester
 Crawls webpage, gathers all links, then performs `get` requests on said links.
